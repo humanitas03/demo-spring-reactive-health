@@ -1,0 +1,11 @@
+
+
+auth:
+  url: http://localhost:8081
+  path:
+    token-issue: /auth/token/issue
+    token-verify: /auth/token/verify
+
+
+health:
+  url: http://localhost:8083
