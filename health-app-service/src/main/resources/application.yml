@@ -1,1 +1,15 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:15434/postgres
+    username: healthadmin
+    password: 1234
+    driver-class-name: org.postgresql.Driver
 
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL95Dialect
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true

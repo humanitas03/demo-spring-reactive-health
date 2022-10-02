@@ -1,0 +1,17 @@
+version: '3'
+volumes:
+  healthdb:
+services:
+  postgresql:
+    image: postgres
+    container_name: health-postgresql
+    restart: always
+    volumes:
+      - healthdb:/var/lib/postgresql
+    ports:
+      - 15434:5432
+    environment:
+      POSGRES_DB: postgres
+      POSTGRES_USER: healthadmin
+      POSTGRES_PASSWORD: 1234
+      TZ: "Asia/Seoul"
