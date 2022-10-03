@@ -2,7 +2,7 @@ version: '3'
 volumes:
   healthdb:
 services:
-  postgresql:
+  health_postgresql:
     image: postgres
     container_name: health-postgresql
     restart: always

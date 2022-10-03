@@ -12,7 +12,7 @@ class AuthClient(
     private val defaultWebclient: WebClient,
     @Value("\${auth.url}")
     private val authBaseUrl: String,
-    @Value("\${auth.path}")
+    @Value("\${auth.path.token-verify}")
     private val authTokenVerifyPath: String,
 ) {
 

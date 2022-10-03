@@ -30,3 +30,7 @@ dependencies {
 tasks.named('test') {
     useJUnitPlatform()
 }
+
+tasks.named("bootBuildImage"){
+    imageName = "example.com/library/${project.name}:0.0.1.SNAPSHOT"
+}

@@ -1,9 +1,28 @@
+spring:
+  cloud:
+    gateway:
+      global-filter:
 
+      routes:
+        - id: get-token
+          uri: http://localhost:8081
+          predicates:
+            - Path=/auth/token/issue
+          filters:
+            - RewritePath=/auth/token/issue/?(?<segment>/*), /$\{segment}
+        - id: health-app
+          uri: http://localhost:8083
+          predicates:
+            - Path=/health/**
+          filters:
+            - RemoveRequestHeaer=X-user-id
+            - RequiredHeaderCheck
+            - Authorization
+            - RewritePath=/health/?(?<segment>/*), /$\{segment}
 
 auth:
   url: http://localhost:8081
   path:
-    token-issue: /auth/token/issue
     token-verify: /auth/token/verify
 
 
