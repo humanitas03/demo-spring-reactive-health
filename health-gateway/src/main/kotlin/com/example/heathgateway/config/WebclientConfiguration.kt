@@ -1,6 +1,7 @@
 package com.example.heathgateway.config
 
 import io.netty.channel.ChannelOption
+import io.netty.handler.logging.LogLevel
 import io.netty.handler.timeout.ReadTimeoutHandler
 import io.netty.handler.timeout.WriteTimeoutHandler
 import org.springframework.context.annotation.Bean
@@ -13,6 +14,7 @@ import org.springframework.web.reactive.function.client.ExchangeStrategies
 import org.springframework.web.reactive.function.client.WebClient
 import reactor.netty.http.client.HttpClient
 import reactor.netty.resources.ConnectionProvider
+import reactor.netty.transport.logging.AdvancedByteBufFormat
 import java.time.Duration
 
 @Configuration
@@ -55,7 +57,8 @@ class WebclientConfiguration {
                             it.addHandlerLast(ReadTimeoutHandler(8))
                             it.addHandlerLast(WriteTimeoutHandler(8))
                         }
-                        .wiretap(true)
+                        .compress(false)
+                        .wiretap("gateway-web-client", LogLevel.INFO, AdvancedByteBufFormat.TEXTUAL)
                 )
             )
             .exchangeStrategies(exchangeStrategies)

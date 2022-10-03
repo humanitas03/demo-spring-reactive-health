@@ -12,8 +12,8 @@ class AuthService(
     suspend fun verifyToken(jwt: String): TokenVerifyResponse {
         val result = authClient.verifyToken(jwt)
 
-        if (result.isAccessible) {
-            throw RuntimeException("")
+        if (!result.isAccessible) {
+            throw RuntimeException("접근 권한이 없습니다.")
         }
 
         return result

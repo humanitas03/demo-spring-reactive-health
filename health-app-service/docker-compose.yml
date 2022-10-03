@@ -5,7 +5,7 @@ services:
   health_postgresql:
     image: postgres
     container_name: health-postgresql
-    restart: always
+#    restart: always
     volumes:
       - healthdb:/var/lib/postgresql
     ports:
